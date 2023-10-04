@@ -4,15 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <TextView
+    <com.google.android.material.navigationrail.NavigationRailView
+        android:id="@+id/navigation_rail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_toolbar"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="4dp"
+        style="@style/Widget.App.NavigationRailView"
+        android:background="@color/dark_background_secondary"
+        app:menu="@menu/main_menu" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@id/navigation_rail"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

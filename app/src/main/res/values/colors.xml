@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Main Color -->
-    <color name="orange_primary">#FB8C00</color>
-    <color name="orange_secondary">#FFB74D</color>
-    <color name="grey_primary">#616161</color>
-    <color name="grey_secondary">#9E9E9E</color>
-    <color name="background_primary">#FFEED5</color>
+    <!-- Light Main Color -->
+    <color name="light_primary">#EF5756</color>
+    <color name="light_secondary">#F66968</color>
+    <color name="light_background_primary">#FFEED5</color>
+    <color name="light_background_secondary">#FFEED5</color>
+    <color name="light_text_primary">#F8F8F8</color>
+    <color name="light_text_secondary">#251C23</color>
+
+    <!-- Dark Main Color -->
+    <color name="dark_primary">#EF5756</color>
+    <color name="dark_secondary">#F66968</color>
+    <color name="dark_background_primary">#17181F</color>
+    <color name="dark_background_secondary">#1F2029</color>
+    <color name="dark_text_primary">#F8F8F8</color>
+    <color name="dark_text_secondary">#828389</color>
+    <color name="dark_icon_primary">#F8F8F8</color>
+    <color name="dark_icon_secondary">#828389</color>
 
     <!-- Red -->
     <color name="red_50">#FFEBEE</color>

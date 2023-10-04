@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SaleSwift</string>
+    <string name="tab_home">Home</string>
     <string name="tab_menu">Menu</string>
     <string name="tab_order">Order</string>
+    <string name="tab_report">Report</string>
 </resources>

@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group>
-        <item
-            android:id="@+id/menu_tab"
-            android:icon="@drawable/ic_menu"
-            android:title="@string/tab_menu"
-            app:showAsAction="always" />
-        <item
-            android:id="@+id/order_tab"
-            android:icon="@drawable/ic_order"
-            android:title="@string/tab_order"
-            app:showAsAction="always" />
-    </group>
+    <item
+        android:id="@+id/home_tab"
+        android:icon="@drawable/ic_home"
+        android:title="@string/tab_home"
+        android:enabled="true" />
+    <item
+        android:id="@+id/order_tab"
+        android:icon="@drawable/ic_order"
+        android:title="@string/tab_order"
+        android:enabled="true" />
+    <item
+        android:id="@+id/report_tab"
+        android:icon="@drawable/ic_report"
+        android:title="@string/tab_report"
+        android:enabled="true" />
 </menu>
