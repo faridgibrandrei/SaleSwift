@@ -5,12 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="8dp"
     android:layout_marginStart="12dp"
-    app:cardCornerRadius="8dp">
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
+    android:id="@+id/category_container">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/card_category_selected">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tv_category"
