@@ -14,6 +14,11 @@
         android:title="@string/tab_order"
         android:enabled="true" />
     <item
+        android:id="@+id/menu_tab"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/tab_menu"
+        android:enabled="true" />
+    <item
         android:id="@+id/report_tab"
         android:icon="@drawable/ic_report"
         android:title="@string/tab_report"

@@ -21,6 +21,7 @@
         android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:background="@color/dark_background_secondary"
         app:layout_constraintStart_toEndOf="@id/navigation_rail"
         app:layout_constraintEnd_toEndOf="parent"/>
 
