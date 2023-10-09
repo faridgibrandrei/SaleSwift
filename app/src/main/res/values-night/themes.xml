@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-<!--    <style name="Theme.SaleSwift" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
     <style name="Theme.SaleSwift" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_primary</item>
         <item name="colorPrimaryVariant">@color/dark_secondary</item>
         <item name="colorOnPrimary">@color/amber_200</item>
@@ -21,17 +21,16 @@
     </style>
 
     <style name="ThemeOverlay.App.NavigationRailView" parent="">
-        <item name="colorPrimary">@color/red_200</item>
-        <item name="colorSecondaryContainer">@color/red_200</item>
-        <item name="colorOnSecondaryContainer">@color/red_200</item>
-        <item name="colorTertiaryContainer">@color/red_200</item>
-        <item name="colorOnTertiaryContainer">@color/red_200</item>
-        <item name="colorError">@color/red_200</item>
-        <item name="colorErrorContainer">@color/red_200</item>
-        <item name="colorOnError">@color/red_200</item>
-        <item name="colorOnErrorContainer">@color/red_200</item>
-        <item name="colorSurface">@color/red_200</item>
-        <item name="colorOnSurface">@color/red_200</item>
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorSecondaryContainer">@color/dark_primary</item>
+        <item name="colorOnSecondaryContainer">@color/dark_icon_primary</item>
+        <item name="colorSurface">@color/dark_primary</item>
+        <item name="colorOnSurface">@color/dark_text_primary</item>
         <item name="colorOnSurfaceVariant">@color/dark_icon_secondary</item>
+    </style>
+
+    <style name="NavRailActiveItemText">
+        <item name="android:textSize">16sp</item> <!-- Customize text size -->
+        <item name="android:textColor">@color/dark_text_primary</item> <!-- Customize text color -->
     </style>
 </resources>

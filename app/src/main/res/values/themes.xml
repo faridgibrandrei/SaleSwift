@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-<!--    <style name="Theme.SaleSwift" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
     <style name="Theme.SaleSwift" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_primary</item>
@@ -28,5 +27,10 @@
         <item name="colorSurface">@color/dark_primary</item>
         <item name="colorOnSurface">@color/dark_text_primary</item>
         <item name="colorOnSurfaceVariant">@color/dark_icon_secondary</item>
+    </style>
+
+    <style name="NavRailActiveItemText">
+        <item name="android:textSize">16sp</item> <!-- Customize text size -->
+        <item name="android:textColor">@color/dark_text_primary</item> <!-- Customize text color -->
     </style>
 </resources>

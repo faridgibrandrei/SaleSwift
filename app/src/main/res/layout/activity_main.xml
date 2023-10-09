@@ -5,14 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/dark_background_secondary"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/main_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fragment_container"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:padding="8dp"
+        android:background="@drawable/circular_icon_background"
+        android:src="@drawable/ic_saleswift"/>
+
+    <TextView
+        android:id="@+id/main_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fragment_container"
+        app:layout_constraintTop_toBottomOf="@id/main_icon"
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="Sale Swift"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/dark_text_primary"/>
+
 
     <com.google.android.material.navigationrail.NavigationRailView
         android:id="@+id/navigation_rail"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_label"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="12dp"
         android:elevation="4dp"
+        app:itemTextAppearanceActive="@style/NavRailActiveItemText"
         style="@style/Widget.App.NavigationRailView"
         android:background="@color/dark_background_secondary"
         app:menu="@menu/main_menu" />

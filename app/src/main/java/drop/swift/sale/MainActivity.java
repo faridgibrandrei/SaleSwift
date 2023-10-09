@@ -1,12 +1,18 @@
 package drop.swift.sale;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationBarItemView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigationrail.NavigationRailView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         navigationRail = findViewById(R.id.navigation_rail);
+        navigationRail.setItemActiveIndicatorHeight(130);
+        navigationRail.setItemActiveIndicatorWidth(120);
+        navigationRail.setItemActiveIndicatorShapeAppearance(ShapeAppearanceModel.builder().setAllCorners(CornerFamily.ROUNDED, 16).build());
 
         if (savedInstanceState == null) {
             openFragment(new HomeFragment());
@@ -31,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.order_tab:
                     openFragment(new OrderFragment());
+                    return true;
+                case R.id.menu_tab:
+                    openFragment(new MenuFragment());
                     return true;
                 case R.id.report_tab:
                     openFragment(new ReportFragment());
