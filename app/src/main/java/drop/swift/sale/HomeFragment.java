@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
         categoryRecyclerView.setLayoutManager(categoryLayoutManager);
 
         List<CategoryModel> categoryModels = new ArrayList<>();
+        categoryModels.add(new CategoryModel("All"));
         categoryModels.add(new CategoryModel("Vape"));
         categoryModels.add(new CategoryModel("Freebase"));
         categoryModels.add(new CategoryModel("Salt Nic"));
@@ -44,6 +45,14 @@ public class HomeFragment extends Fragment {
         productRecyclerView.setLayoutManager(productLayoutManager);
 
         List<ProductModel> productModels = new ArrayList<>();
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
         productModels.add(new ProductModel("product A", "url-A", 1000, 5));
         productModels.add(new ProductModel("product A", "url-A", 1000, 5));
         productModels.add(new ProductModel("product A", "url-A", 1000, 5));

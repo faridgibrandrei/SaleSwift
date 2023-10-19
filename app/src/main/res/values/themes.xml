@@ -33,4 +33,24 @@
         <item name="android:textSize">16sp</item> <!-- Customize text size -->
         <item name="android:textColor">@color/dark_text_primary</item> <!-- Customize text color -->
     </style>
+
+    <style name="ProductName">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/dark_text_primary</item>
+    </style>
+
+    <style name="ProductPrice">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/dark_primary</item>
+    </style>
+
+    <style name="ProductStock">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/dark_text_primary</item>
+    </style>
+
+    <style name="ProductQuantity">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dark_text_primary</item>
+    </style>
 </resources>
