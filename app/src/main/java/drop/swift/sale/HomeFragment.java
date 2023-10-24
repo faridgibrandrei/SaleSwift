@@ -15,8 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import drop.swift.sale.cart.CartAdapter;
 import drop.swift.sale.category.CategoryAdapter;
+import drop.swift.sale.manager.OngoingOrderManager;
+import drop.swift.sale.model.CartModel;
 import drop.swift.sale.model.CategoryModel;
+import drop.swift.sale.model.OngoingOrderModel;
 import drop.swift.sale.model.ProductModel;
 import drop.swift.sale.product.ProductAdapter;
 
@@ -45,22 +49,39 @@ public class HomeFragment extends Fragment {
         productRecyclerView.setLayoutManager(productLayoutManager);
 
         List<ProductModel> productModels = new ArrayList<>();
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
-        productModels.add(new ProductModel("product A", "url-A", 1000, 5));
+        productModels.add(new ProductModel("P1", "product 1", "url-1", 10000, 5));
+        productModels.add(new ProductModel("P2", "product 2", "url-2", 15000, 4));
+        productModels.add(new ProductModel("P3", "product 3", "url-3", 13500, 8));
+        productModels.add(new ProductModel("P4", "product 4", "url-4", 22000, 9));
+        productModels.add(new ProductModel("P5", "product 5", "url-5", 22000, 14));
+        productModels.add(new ProductModel("P6", "product 6", "url-6", 28500, 4));
+        productModels.add(new ProductModel("P7", "product 7", "url-7", 16000, 13));
+        productModels.add(new ProductModel("P8", "product 8", "url-8", 16500, 13));
+        productModels.add(new ProductModel("P9", "product 9", "url-9", 16000, 11));
+        productModels.add(new ProductModel("P10", "product 10", "url-10", 16000, 2));
+        productModels.add(new ProductModel("P11", "product 11", "url-11", 18000, 3));
+        productModels.add(new ProductModel("P12", "product 12", "url-12", 19500, 20));
+        productModels.add(new ProductModel("P13", "product 13", "url-13", 21000, 12));
+        productModels.add(new ProductModel("P14", "product 14", "url-14", 21000, 7));
         ProductAdapter productAdapter = new ProductAdapter(productModels);
         productRecyclerView.setAdapter(productAdapter);
 
+        RecyclerView cartRecyclerView = view.findViewById(R.id.cart_recyclerview);
+        RecyclerView.LayoutManager cartLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        cartRecyclerView.setLayoutManager(cartLayoutManager);
+
+        List<CartModel> cartModels = new ArrayList<>();
+        cartModels.add(new CartModel("product A", "url-A", 1000, 2));
+        cartModels.add(new CartModel("product A", "url-A", 1000, 2));
+        cartModels.add(new CartModel("product A", "url-A", 1000, 2));
+        CartAdapter cartAdapter = new CartAdapter(cartModels);
+        cartRecyclerView.setAdapter(cartAdapter);
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }

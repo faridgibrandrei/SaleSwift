@@ -1,34 +1,20 @@
 package drop.swift.sale.model;
 
-public class ProductModel {
-
-    private String productId; //(Primary Key)
+public class CartModel {
     private String name;
     private String imageUrl;
     private int price;
-    private int stock;
+    private int quantity;
 
-//    private String category;
-
-
-    public ProductModel(String productId, String name, String imageUrl, int price, int stock) {
-        this.productId = productId;
+    public CartModel(String name, String imageUrl, int price, int quantity) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.price = price;
-        this.stock = stock;
+        this.quantity = quantity;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public void setName(String name) {
@@ -51,12 +37,11 @@ public class ProductModel {
         this.price = price;
     }
 
-    public int getStock() {
-        return stock;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
-

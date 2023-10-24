@@ -16,9 +16,12 @@ import com.google.android.material.navigationrail.NavigationRailView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
 
+import drop.swift.sale.manager.OngoingOrderManager;
+
 public class MainActivity extends AppCompatActivity {
 
     private NavigationBarView navigationRail;
+    public static OngoingOrderManager ongoingOrderManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        // Universal Object
+        ongoingOrderManager= new OngoingOrderManager();
 
     }
 

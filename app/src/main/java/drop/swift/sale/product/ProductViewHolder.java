@@ -1,6 +1,8 @@
 package drop.swift.sale.product;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,8 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import drop.swift.sale.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
-    public TextView productName, productPrice, productStock;
+    public TextView productName, productPrice, productStock, tv_quantity;
     public ImageView displayProduct;
+    public ImageButton btn_decrease_quantity, btn_increase_quantity;
     public ConstraintLayout quantityLayer;
 
     public CardView productContainer;
@@ -25,5 +28,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         productStock = itemView.findViewById(R.id.tv_product_unit);
         productContainer = itemView.findViewById(R.id.product_container);
         quantityLayer = itemView.findViewById(R.id.quantity_layer);
+        btn_decrease_quantity = itemView.findViewById(R.id.btn_decrease_quantity);
+        btn_increase_quantity = itemView.findViewById(R.id.btn_increase_quantity);
+        tv_quantity = itemView.findViewById(R.id.tv_quantity);
     }
 }
