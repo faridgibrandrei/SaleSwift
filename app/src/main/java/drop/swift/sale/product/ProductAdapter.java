@@ -52,8 +52,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         holder.productPrice.setText("Rp " + selectedProduct.getPrice());
         holder.productStock.setText(selectedProduct.getStock() + " items");
 
-        String dummyImageUrl = "https://store.geekvape.com/cdn/shop/products/Aegis-Legend2-500-5003_692f7f4c-b642-4958-87b1-f1835812d202.jpg?v=1669371676";
-        ImageHelper.loadFixImage(dummyImageUrl, holder.displayProduct);
+//        String dummyImageUrl = "https://store.geekvape.com/cdn/shop/products/Aegis-Legend2-500-5003_692f7f4c-b642-4958-87b1-f1835812d202.jpg?v=1669371676";
+        ImageHelper.loadFixImage(selectedProduct.getImageUrl(), holder.displayProduct);
 
         // Set the CardView's selected state based on the position
         holder.productContainer.setSelected(holder.getAdapterPosition() == selectedItemPosition);

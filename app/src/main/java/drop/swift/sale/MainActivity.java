@@ -1,18 +1,11 @@
 package drop.swift.sale;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationBarItemView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigationrail.NavigationRailView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
 import com.google.firebase.FirebaseApp;
@@ -28,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(this);
 
         navigationRail = findViewById(R.id.navigation_rail);
         navigationRail.setItemActiveIndicatorHeight(130);
@@ -59,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Universal Object
         ongoingOrderManager= new OngoingOrderManager();
-
-        FirebaseApp.initializeApp(this);
     }
 
     private void openFragment(Fragment destination) {

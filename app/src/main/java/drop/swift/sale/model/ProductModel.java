@@ -10,6 +10,9 @@ public class ProductModel {
 
 //    private String category;
 
+    public ProductModel() {
+        // Default constructor required for Firebase
+    }
 
     public ProductModel(String productId, String name, String imageUrl, int price, int stock) {
         this.productId = productId;
