@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1098792190609",
+    "firebase_url": "https://drop-sandbox-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "drop-sandbox",
+    "storage_bucket": "drop-sandbox.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098792190609:android:61868f4ac4af6bd25cf530",
+        "android_client_info": {
+          "package_name": "drop.swift.sale"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPNjd2075_KhRxIKbJ3QVqJ3yYXrfSMUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

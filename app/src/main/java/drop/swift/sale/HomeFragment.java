@@ -22,15 +22,22 @@ import drop.swift.sale.model.CartModel;
 import drop.swift.sale.model.CategoryModel;
 import drop.swift.sale.model.OngoingOrderModel;
 import drop.swift.sale.model.ProductModel;
+import drop.swift.sale.observer.OngoingOrderObserver;
 import drop.swift.sale.product.ProductAdapter;
 
 public class HomeFragment extends Fragment {
+
+    private CartAdapter cartAdapter;
+    private ProductAdapter productAdapter;
+    private CategoryAdapter categoryAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+        //--- CATEGORY ADAPTER ---//
         RecyclerView categoryRecyclerView = view.findViewById(R.id.category_recyclerview);
         RecyclerView.LayoutManager categoryLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(categoryLayoutManager);
@@ -41,9 +48,21 @@ public class HomeFragment extends Fragment {
         categoryModels.add(new CategoryModel("Freebase"));
         categoryModels.add(new CategoryModel("Salt Nic"));
         categoryModels.add(new CategoryModel("Accessories"));
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categoryModels);
+        categoryAdapter = new CategoryAdapter(categoryModels);
         categoryRecyclerView.setAdapter(categoryAdapter);
 
+
+        //--- CART ADAPTER ---//
+        RecyclerView cartRecyclerView = view.findViewById(R.id.cart_recyclerview);
+        RecyclerView.LayoutManager cartLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        cartRecyclerView.setLayoutManager(cartLayoutManager);
+
+        cartAdapter = new CartAdapter(new OngoingOrderModel());
+        cartRecyclerView.setAdapter(cartAdapter);
+        OngoingOrderManager.getInstance().registerObserver(cartAdapter);
+
+
+        //--- PRODUCT ADAPTER ---//
         RecyclerView productRecyclerView = view.findViewById(R.id.product_recyclerview);
         RecyclerView.LayoutManager productLayoutManager = new GridLayoutManager(getContext(), 4, RecyclerView.VERTICAL, false);
         productRecyclerView.setLayoutManager(productLayoutManager);
@@ -63,19 +82,8 @@ public class HomeFragment extends Fragment {
         productModels.add(new ProductModel("P12", "product 12", "url-12", 19500, 20));
         productModels.add(new ProductModel("P13", "product 13", "url-13", 21000, 12));
         productModels.add(new ProductModel("P14", "product 14", "url-14", 21000, 7));
-        ProductAdapter productAdapter = new ProductAdapter(productModels);
+        productAdapter = new ProductAdapter(productModels);
         productRecyclerView.setAdapter(productAdapter);
-
-        RecyclerView cartRecyclerView = view.findViewById(R.id.cart_recyclerview);
-        RecyclerView.LayoutManager cartLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        cartRecyclerView.setLayoutManager(cartLayoutManager);
-
-        List<CartModel> cartModels = new ArrayList<>();
-        cartModels.add(new CartModel("product A", "url-A", 1000, 2));
-        cartModels.add(new CartModel("product A", "url-A", 1000, 2));
-        cartModels.add(new CartModel("product A", "url-A", 1000, 2));
-        CartAdapter cartAdapter = new CartAdapter(cartModels);
-        cartRecyclerView.setAdapter(cartAdapter);
 
         return view;
     }
@@ -83,5 +91,11 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        OngoingOrderManager.getInstance().unregisterObserver(cartAdapter);
     }
 }

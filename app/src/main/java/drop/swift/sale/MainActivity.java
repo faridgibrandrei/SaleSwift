@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigationrail.NavigationRailView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.google.firebase.FirebaseApp;
 
 import drop.swift.sale.manager.OngoingOrderManager;
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         // Universal Object
         ongoingOrderManager= new OngoingOrderManager();
 
+        FirebaseApp.initializeApp(this);
     }
 
     private void openFragment(Fragment destination) {

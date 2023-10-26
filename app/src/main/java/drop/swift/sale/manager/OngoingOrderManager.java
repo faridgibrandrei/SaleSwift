@@ -7,15 +7,19 @@ import java.util.List;
 
 import drop.swift.sale.model.OngoingOrderItemModel;
 import drop.swift.sale.model.OngoingOrderModel;
+import drop.swift.sale.observer.OngoingOrderObserver;
 
 public class OngoingOrderManager {
     private static OngoingOrderManager instance;
     private ArrayList<OngoingOrderItemModel> ongoingOrderItemModels;
     private OngoingOrderModel ongoingOrderModels;
+    private List<OngoingOrderObserver> observers;
+
 
     public OngoingOrderManager() {
         this.ongoingOrderItemModels = new ArrayList<>();
         ongoingOrderModels = new OngoingOrderModel();
+        observers = new ArrayList<>();
     }
 
     public static synchronized OngoingOrderManager getInstance() {
@@ -38,6 +42,7 @@ public class OngoingOrderManager {
             ongoingOrderItemModels.add(newOngoingOrderItemModel);
         }
         ongoingOrderModels.setOngoingOrderItemModel(ongoingOrderItemModels);
+        notifyObservers();
     }
 
     public void removeFromOngoingOrder(String productId) {
@@ -53,6 +58,7 @@ public class OngoingOrderManager {
             if (ongoingOrderModels.getOngoingOrderItemModel().size()==0)
                 ongoingOrderModels.setOngoingOrderItemModel(null);
         }
+        notifyObservers();
     }
 
     public OngoingOrderItemModel findExistingItem(String productId) {
@@ -62,5 +68,21 @@ public class OngoingOrderManager {
             }
         }
         return null;
+    }
+
+    public void registerObserver(OngoingOrderObserver observer) {
+        if (!observers.contains(observer)) {
+            observers.add(observer);
+        }
+    }
+
+    public void unregisterObserver(OngoingOrderObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (OngoingOrderObserver observer : observers) {
+            observer.onOngoingOrderUpdate();
+        }
     }
 }

@@ -23,6 +23,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
     public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
+        displayProduct = itemView.findViewById(R.id.iv_product_display);
         productName = itemView.findViewById(R.id.tv_product_name);
         productPrice = itemView.findViewById(R.id.tv_product_price);
         productStock = itemView.findViewById(R.id.tv_product_unit);

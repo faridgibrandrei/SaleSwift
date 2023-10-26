@@ -13,21 +13,15 @@ import java.util.Optional;
 import drop.swift.sale.R;
 import drop.swift.sale.manager.OngoingOrderManager;
 import drop.swift.sale.model.OngoingOrderItemModel;
-import drop.swift.sale.model.OngoingOrderModel;
 import drop.swift.sale.model.ProductModel;
+import drop.swift.sale.module.helper.ImageHelper;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     private List<ProductModel> productList;
-    private OngoingOrderModel ongoingOrderModel;
     private int selectedItemPosition = -1; // Initially, no item is selected
 
     public ProductAdapter(List<ProductModel> productList) {
         this.productList = productList;
-    }
-
-    public ProductAdapter(List<ProductModel> productList, OngoingOrderModel ongoingOrderModel) {
-        this.productList = productList;
-        this.ongoingOrderModel = ongoingOrderModel;
     }
 
     @NonNull
@@ -57,6 +51,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         holder.productName.setText(selectedProduct.getName());
         holder.productPrice.setText("Rp " + selectedProduct.getPrice());
         holder.productStock.setText(selectedProduct.getStock() + " items");
+
+        String dummyImageUrl = "https://store.geekvape.com/cdn/shop/products/Aegis-Legend2-500-5003_692f7f4c-b642-4958-87b1-f1835812d202.jpg?v=1669371676";
+        ImageHelper.loadFixImage(dummyImageUrl, holder.displayProduct);
 
         // Set the CardView's selected state based on the position
         holder.productContainer.setSelected(holder.getAdapterPosition() == selectedItemPosition);

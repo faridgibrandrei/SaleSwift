@@ -7,21 +7,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import drop.swift.sale.R;
-import drop.swift.sale.category.CategoryViewHolder;
-import drop.swift.sale.model.CartModel;
-import drop.swift.sale.model.CategoryModel;
+import drop.swift.sale.manager.OngoingOrderManager;
+import drop.swift.sale.model.OngoingOrderItemModel;
 import drop.swift.sale.model.OngoingOrderModel;
+import drop.swift.sale.module.helper.ImageHelper;
+import drop.swift.sale.observer.OngoingOrderObserver;
 
-public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
-    private List<CartModel> cartList;
+public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> implements OngoingOrderObserver {
     private OngoingOrderModel ongoingOrderModel;
     private int selectedItemPosition = -1; // Initially, no item is selected
 
-    public CartAdapter(List<CartModel> cartList) {
-        this.cartList = cartList;
+    public CartAdapter(OngoingOrderModel ongoingOrderModel) {
+        this.ongoingOrderModel = ongoingOrderModel;
     }
 
     @NonNull
@@ -33,13 +31,26 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        CartModel selectedCart = cartList.get(position);
-
+        OngoingOrderItemModel selectedCart = ongoingOrderModel.getOngoingOrderItemModel().get(position);
         holder.cartContainer.setBackgroundResource(R.drawable.card_cart);
+
+        String dummyImageUrl = "https://store.geekvape.com/cdn/shop/products/Aegis-Legend2-500-5003_692f7f4c-b642-4958-87b1-f1835812d202.jpg?v=1669371676";
+        ImageHelper.loadFixImage(dummyImageUrl, holder.cartDisplayProduct);
     }
 
     @Override
     public int getItemCount() {
-        return cartList.size();
+        if (ongoingOrderModel.getOngoingOrderItemModel() != null) {
+            return ongoingOrderModel.getOngoingOrderItemModel().size();
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public void onOngoingOrderUpdate() {
+        OngoingOrderManager ongoingOrderManager = OngoingOrderManager.getInstance();
+        this.ongoingOrderModel = ongoingOrderManager.getOngoingOrder();
+        notifyDataSetChanged();
     }
 }
