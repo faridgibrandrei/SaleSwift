@@ -11,6 +11,9 @@ import drop.swift.sale.R;
 import drop.swift.sale.manager.OngoingOrderManager;
 import drop.swift.sale.model.OngoingOrderItemModel;
 import drop.swift.sale.model.OngoingOrderModel;
+import drop.swift.sale.model.ProductListModel;
+import drop.swift.sale.model.ProductModel;
+import drop.swift.sale.module.Util;
 import drop.swift.sale.module.helper.ImageHelper;
 import drop.swift.sale.observer.OngoingOrderObserver;
 
@@ -34,8 +37,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> implements
         OngoingOrderItemModel selectedCart = ongoingOrderModel.getOngoingOrderItemModel().get(position);
         holder.cartContainer.setBackgroundResource(R.drawable.card_cart);
 
-        String dummyImageUrl = "https://store.geekvape.com/cdn/shop/products/Aegis-Legend2-500-5003_692f7f4c-b642-4958-87b1-f1835812d202.jpg?v=1669371676";
-        ImageHelper.loadFixImage(dummyImageUrl, holder.cartDisplayProduct);
+        ProductModel product = ProductListModel.getInstance().getProductById(selectedCart.getProductId());
+        ImageHelper.loadFixImage(product.getImageUrl(), holder.cartDisplayProduct);
+        holder.cartProductName.setText(product.getName());
+        holder.cartProductPrice.setText(Util.currencyFormatting(product.getPrice()));
     }
 
     @Override
