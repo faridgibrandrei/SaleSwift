@@ -4,4 +4,6 @@
     <string name="tab_menu">Menu</string>
     <string name="tab_order">Order</string>
     <string name="tab_report">Report</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="member">Member</string>
 </resources>

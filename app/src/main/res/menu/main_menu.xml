@@ -23,4 +23,9 @@
         android:icon="@drawable/ic_report"
         android:title="@string/tab_report"
         android:enabled="true" />
+    <item
+        android:id="@+id/member_tab"
+        android:icon="@drawable/ic_member"
+        android:title="@string/member"
+        android:enabled="true" />
 </menu>

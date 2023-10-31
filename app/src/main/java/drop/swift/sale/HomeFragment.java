@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,22 +22,36 @@ import drop.swift.sale.cart.CartAdapter;
 import drop.swift.sale.category.CategoryAdapter;
 import drop.swift.sale.manager.OngoingOrderManager;
 import drop.swift.sale.model.CategoryModel;
+import drop.swift.sale.model.OngoingOrderItemModel;
 import drop.swift.sale.model.OngoingOrderModel;
 import drop.swift.sale.model.ProductListModel;
 import drop.swift.sale.model.ProductModel;
+import drop.swift.sale.module.Util;
+import drop.swift.sale.module.firebase.FirebaseCallback;
 import drop.swift.sale.module.firebase.FirebaseHelper;
+import drop.swift.sale.observer.OngoingOrderObserver;
 import drop.swift.sale.product.ProductAdapter;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements OngoingOrderObserver {
 
     private CartAdapter cartAdapter;
     private ProductAdapter productAdapter;
     private CategoryAdapter categoryAdapter;
 
+    private TextView tv_subtotal, tv_tax, tv_total;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        tv_subtotal = view.findViewById(R.id.tv_subtotal_val);
+        tv_tax = view.findViewById(R.id.tv_tax_val);
+        tv_total = view.findViewById(R.id.tv_total_val);
+
+        tv_subtotal.setText(Util.currencyFormatting(0));
+        tv_tax.setText(Util.currencyFormatting(0));
+        tv_total.setText(Util.currencyFormatting(0));
 
         new FirebaseHelper().readDatabaseOnce(dataSnapshot -> {
             //--- PRODUCT ADAPTER ---//
@@ -76,18 +91,44 @@ public class HomeFragment extends Fragment {
         cartAdapter = new CartAdapter(new OngoingOrderModel());
         cartRecyclerView.setAdapter(cartAdapter);
         OngoingOrderManager.getInstance().registerObserver(cartAdapter);
-
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        OngoingOrderManager.getInstance().registerObserver(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        OngoingOrderManager.getInstance().unregisterObserver(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         OngoingOrderManager.getInstance().unregisterObserver(cartAdapter);
+    }
+
+    @Override
+    public void onOngoingOrderUpdate() {
+        int subTotal = 0;
+
+        OngoingOrderManager ongoingOrderManager = OngoingOrderManager.getInstance();
+        if (ongoingOrderManager.getOngoingOrder()!=null && ongoingOrderManager.getOngoingOrder().getOngoingOrderItemModel()!=null) {
+            for (OngoingOrderItemModel ongoingItem : ongoingOrderManager.getOngoingOrder().getOngoingOrderItemModel()) {
+                ProductModel product = ProductListModel.getInstance().getProductById(ongoingItem.getProductId());
+                subTotal += ongoingItem.getQuantity() * product.getPrice();
+            }
+        }
+
+        int tax = subTotal * 10 / 100;
+        int total = subTotal + tax;
+
+        tv_subtotal.setText(Util.currencyFormatting(subTotal));
+        tv_tax.setText(Util.currencyFormatting(tax));
+        tv_total.setText(Util.currencyFormatting(total));
     }
 }
